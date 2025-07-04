@@ -70,8 +70,7 @@ public class StringCalculatorTest {
 
     @Test
     public void testDelimiterOfAnyLength() {
-        StringCalculator calc = new StringCalculator();
-        int result = calc.add("//[***]\n1***2***3");
+        int result = calculator.add("//[***]\n1***2***3");
         assertEquals(6, result);
     }
 

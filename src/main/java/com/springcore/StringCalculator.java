@@ -16,7 +16,7 @@ public class StringCalculator
             return 0;
         }
 
-        String delimiter = ",|\n"; // default delimiters
+        String delimiter = ",|\n";
         String numString = numbers;
 
         if (numbers.startsWith("//")) {
