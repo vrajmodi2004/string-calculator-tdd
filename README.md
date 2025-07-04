@@ -75,7 +75,7 @@ These are the cases I covered step-by-step:
 ---
 
 ### 🎉 **All Tests Passing**
-![All Tests Passing](all_tests_cases.png)
+![All Tests Passing](all_test_cases.png)
 
 ---
 
