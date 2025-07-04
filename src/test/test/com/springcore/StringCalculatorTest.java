@@ -42,4 +42,10 @@ public class StringCalculatorTest {
         assertEquals(6, calculator.add("//|\n1|2|3"));
     }
 
+    @Test
+    public void show_error_for_negative_numbers(){
+        assertEquals(8, calculator.add("-1,2"));
+        assertEquals(6, calculator.add("2,-10,-1"));
+    }
+
 }
