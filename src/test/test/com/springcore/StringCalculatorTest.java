@@ -24,4 +24,10 @@ public class StringCalculatorTest {
         assertEquals(10, calculator.add("6,4"));
     }
 
+    @Test
+    public void multiple_numbers_string_should_return_sum_of_all(){
+        assertEquals(8,calculator.add("1,2,5"));
+        assertEquals(10, calculator.add("6,2,2"));
+    }
+
 }
