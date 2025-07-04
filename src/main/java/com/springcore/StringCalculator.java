@@ -16,7 +16,7 @@ public class StringCalculator
             return 0;
         }
 
-        String delimiter = ",|\n";  // Default delimiters
+        String delimiter = ",|\n";
         String numString = numbers;
 
         if (numbers.startsWith("//")) {
@@ -42,7 +42,10 @@ public class StringCalculator
             throw new IllegalArgumentException("negative numbers not allowed: " + message);
         }
 
-        return nums.stream().mapToInt(Integer::intValue).sum();
+        return nums.stream()
+                .filter(n -> n <= 1000)
+                .mapToInt(Integer::intValue)
+                .sum();
     }
 
 }
