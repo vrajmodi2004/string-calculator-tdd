@@ -1,7 +1,9 @@
 package com.springcore;
 
 import java.util.Arrays;
+import java.util.List;
 import java.util.regex.Pattern;
+import java.util.stream.Collectors;
 
 /**
  * Hello world!
@@ -14,21 +16,33 @@ public class StringCalculator
             return 0;
         }
 
-        String delimiter = ",|\n";  // Default: comma or newline
+        String delimiter = ",|\n";  // Default delimiters
         String numString = numbers;
 
         if (numbers.startsWith("//")) {
             String[] parts = numbers.split("\n", 2);
-            // Escape custom delimiter to handle regex special chars
             delimiter = Pattern.quote(parts[0].substring(2));
             numString = parts[1];
         }
 
-        return Arrays.stream(numString.split(delimiter))
+        List<Integer> nums = Arrays.stream(numString.split(delimiter))
                 .map(String::trim)
-                .filter(s -> !s.isEmpty())   // Defensive: skip empty strings
-                .mapToInt(Integer::parseInt)
-                .sum();
+                .filter(s -> !s.isEmpty())
+                .map(Integer::parseInt)
+                .collect(Collectors.toList());
+
+        List<Integer> negatives = nums.stream()
+                .filter(n -> n < 0)
+                .collect(Collectors.toList());
+
+        if (!negatives.isEmpty()) {
+            String message = negatives.stream()
+                    .map(String::valueOf)
+                    .collect(Collectors.joining(", "));
+            throw new IllegalArgumentException("negative numbers not allowed: " + message);
+        }
+
+        return nums.stream().mapToInt(Integer::intValue).sum();
     }
 
 }
