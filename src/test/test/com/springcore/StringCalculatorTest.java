@@ -2,6 +2,7 @@ package com.springcore;
 
 import org.junit.Test;
 import static junit.framework.Assert.assertEquals;
+import static org.junit.Assert.fail;
 
 public class StringCalculatorTest {
 
@@ -44,8 +45,21 @@ public class StringCalculatorTest {
 
     @Test
     public void show_error_for_negative_numbers(){
-        assertEquals(8, calculator.add("-1,2"));
-        assertEquals(6, calculator.add("2,-10,-1"));
+        StringCalculator calculator = new StringCalculator();
+
+        try {
+            calculator.add("1,-2,3");
+            fail("Exception expected for negative numbers");
+        } catch (IllegalArgumentException ex) {
+            assertEquals("negative numbers not allowed: -2", ex.getMessage());
+        }
+
+        try {
+            calculator.add("-1,-2,3,-4");
+            fail("Exception expected for multiple negative numbers");
+        } catch (IllegalArgumentException ex) {
+            assertEquals("negative numbers not allowed: -1, -2, -4", ex.getMessage());
+        }
     }
 
 }
