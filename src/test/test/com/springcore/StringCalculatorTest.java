@@ -80,5 +80,11 @@ public class StringCalculatorTest {
         assertEquals(6, result);
     }
 
+    @Test
+    public void test_multiple_delimiters_of_any_length() {
+        int result = calculator.add("//[***][%%]\n1***2%%3");
+        assertEquals(6, result);
+    }
+
 
 }
