@@ -65,17 +65,17 @@ These are the cases I covered step-by-step:
 ## 📸 **Screenshots**
 
 ### 🔴 **Failing Test Example**
-![Failing Test](failing_test.png)
+![Failing Test](Failed_state.png)
 
 ---
 
 ### ✅ **Passing Test Example**
-![Passing Test](/passing_test.png)
+![Passing Test](/Success_state.png)
 
 ---
 
 ### 🎉 **All Tests Passing**
-![All Tests Passing](all_tests_passing.png)
+![All Tests Passing](all_tests_cases.png)
 
 ---
 
