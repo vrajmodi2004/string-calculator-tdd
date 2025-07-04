@@ -16,12 +16,25 @@ public class StringCalculator
             return 0;
         }
 
-        String delimiter = ",|\n";
+        String delimiter = ",|\n"; // default delimiters
         String numString = numbers;
 
         if (numbers.startsWith("//")) {
             String[] parts = numbers.split("\n", 2);
-            delimiter = Pattern.quote(parts[0].substring(2));
+            String delimiterPart = parts[0].substring(2);
+
+            if (delimiterPart.startsWith("[") && delimiterPart.endsWith("]")) {
+                // Supports multiple delimiters like //[***][%%]
+                List<String> delimiters = new java.util.ArrayList<>();
+                java.util.regex.Matcher m = java.util.regex.Pattern.compile("\\[(.*?)]").matcher(delimiterPart);
+                while (m.find()) {
+                    delimiters.add(Pattern.quote(m.group(1)));
+                }
+                delimiter = String.join("|", delimiters);
+            } else {
+                delimiter = Pattern.quote(delimiterPart);
+            }
+
             numString = parts[1];
         }
 
@@ -47,5 +60,6 @@ public class StringCalculator
                 .mapToInt(Integer::intValue)
                 .sum();
     }
+
 
 }
