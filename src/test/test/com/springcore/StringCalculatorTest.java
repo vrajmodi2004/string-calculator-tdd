@@ -38,8 +38,8 @@ public class StringCalculatorTest {
 
     @Test
     public void string_with_different_delimiters_should_return_sum_of_all(){
-        assertEquals(3,calculator.add("//;\n1;2"));
-        assertEquals(10, calculator.add("//1;2\n3;4"));
+        assertEquals(8, calculator.add("//-\n3-5"));
+        assertEquals(6, calculator.add("//|\n1|2|3"));
     }
 
 }
