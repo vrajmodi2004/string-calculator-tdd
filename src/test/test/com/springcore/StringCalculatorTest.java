@@ -62,4 +62,10 @@ public class StringCalculatorTest {
         }
     }
 
+    @Test
+    public void ignore_numbers_greater_than_1000() {
+        assertEquals(1002, calculator.add("2,1000"));
+        assertEquals(2, calculator.add("//;\n2;1001;1002;10000"));
+    }
+
 }
