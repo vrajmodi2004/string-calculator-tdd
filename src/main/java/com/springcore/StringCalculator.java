@@ -1,5 +1,7 @@
 package com.springcore;
 
+import java.util.Arrays;
+
 /**
  * Hello world!
  *
@@ -7,10 +9,18 @@ package com.springcore;
 public class StringCalculator
 {
     public int add(String numbers) {
-        if (numbers == null || numbers.isEmpty()) {
+        if (numbers == null || numbers.trim().isEmpty()) {
             return 0;
         }
-        return Integer.parseInt(numbers.trim());
+
+        if (!numbers.contains(",")) {
+            return Integer.parseInt(numbers.trim());
+        }
+
+        return Arrays.stream(numbers.split(","))
+                .map(String::trim)
+                .mapToInt(Integer::parseInt)
+                .sum();
     }
 
 }
