@@ -33,7 +33,7 @@ public class StringCalculatorTest {
     @Test
     public void string_with_parenthesis_should_return_sum_of_all(){
         assertEquals(6,calculator.add("1\n2,3"));
-        assertEquals(10, calculator.add("6\n2,2"));
+        assertEquals(10, calculator.add("1\n2\n3,4"));
     }
 
 }
